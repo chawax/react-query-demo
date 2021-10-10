@@ -1,0 +1,60 @@
+{
+  "translation": {
+    "app": {
+      "title": "My pandas"
+    },
+    "common": {
+      "cancel": "Cancel",
+      "close": "Close",
+      "retry": "Retry",
+      "submit": "Submit"
+    },
+    "pandaList": {
+      "noPandas": "No panda was found !",
+      "addNewPanda": "Add a new panda"
+    },
+    "pandaDetails": {
+      "editPanda": "Edit panda",
+      "deletePanda": "Delete panda",
+      "errors": {
+        "delete": "Could not delete panda"
+      }
+    },
+    "createPanda": {
+      "title": "New panda",
+      "errors": {
+        "create": "Could not create panda"
+      }
+    },
+    "editPanda": {
+      "title": "Edit panda {{id}}",
+      "errors": {
+        "update": "Could not update panda"
+      }
+    },
+    "pandaForm": {
+      "name": {
+        "label": "Name",
+        "placeholder": "The panda name",
+        "errors": {
+          "required": "Please enter a name for the panda"
+        }
+      },
+      "interests": {
+        "label": "Hobbies",
+        "placeholder": "The panda hobbies (a comma separated list)",
+        "errors": {
+          "required": "Please enter hobbies for the panda"
+        }
+      },
+      "image": {
+        "label": "Image",
+        "placeholder": "The URL of the panda photo",
+        "errors": {
+          "required": "Please enter a photo URL for the panda",
+          "invalid": "Please enter a valid URL"
+        }
+      }
+    }
+  }
+}
