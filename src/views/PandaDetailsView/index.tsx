@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useParams } from 'react-router-dom';
-import { Alert, Button, Spinner } from 'reactstrap';
+import { Alert, Button, Col, Container, Row, Spinner } from 'reactstrap';
 import ErrorAndRetry from '../../components/ErrorAndRetry';
 import PandaDetails from '../../components/PandaDetails';
 import useDeletePanda from '../../hooks/useDeletePanda';
@@ -40,25 +40,30 @@ const PandaDetailsView = () => {
       {isSuccess && data && (
         <>
           <PandaDetails panda={data} />
-          <div style={{ padding: 20 }}>
-            <Button color="primary" onClick={handleClose}>
-              {t('common.close')}
-            </Button>
-            <Button
-              color="primary"
-              onClick={handleEdit}
-              style={{ marginLeft: 10 }}
-            >
-              {t('pandaDetails.editPanda')}
-            </Button>
-            <Button
-              color="primary"
-              onClick={handleDelete}
-              style={{ marginLeft: 10 }}
-            >
-              {t('pandaDetails.deletePanda')}
-            </Button>
-          </div>
+          <Container>
+            <Row>
+              <Col style={{ padding: 10 }}>
+                <Button color="primary" onClick={handleClose}>
+                  {t('common.close')}
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col style={{ padding: 10 }}>
+                <Button color="primary" onClick={handleEdit}>
+                  {t('pandaDetails.editPanda')}
+                </Button>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col style={{ padding: 10 }}>
+                <Button color="primary" onClick={handleDelete}>
+                  {t('pandaDetails.deletePanda')}
+                </Button>
+              </Col>
+            </Row>
+          </Container>
         </>
       )}
     </>
