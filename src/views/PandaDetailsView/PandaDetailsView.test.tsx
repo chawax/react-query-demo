@@ -1,11 +1,14 @@
-import { render, waitForElementToBeRemoved } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { createMemoryHistory } from 'history';
 import type { ReactNode } from 'react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Route, Router } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import '../../i18n';
 import pandas from '../../mocks/pandas.json';
 import PandaDetailsView from './';
@@ -39,43 +42,42 @@ describe('PandaDetailsView', () => {
 
     // Pour tester ce composant on doit simuler l'appel d'une route /pandas/1
 
-    const history = createMemoryHistory({
-      initialEntries: ['/pandas/1'],
-    });
-    const { getByText, getByRole, getAllByRole } = render(
+    render(
       <ReactQueryWrapper>
-        <Router history={history}>
-          <Route path="/pandas/:id" component={PandaDetailsView} />
-        </Router>
+        <MemoryRouter initialEntries={['/pandas/1']} initialIndex={0}>
+          <Routes>
+            <Route path="/pandas/:id" element={<PandaDetailsView />} />
+          </Routes>
+        </MemoryRouter>
       </ReactQueryWrapper>,
     );
 
     // Should display a loading indicator
 
-    const loadingElement = getByText(/Loading.../i);
+    const loadingElement = screen.getByText(/Loading.../i);
     expect(loadingElement).toBeInTheDocument();
 
     // The loading indicator should disappear
 
-    await waitForElementToBeRemoved(() => getByText(/Loading.../i));
+    await waitForElementToBeRemoved(() => screen.queryByText(/Loading.../i));
     expect(loadingElement).not.toBeInTheDocument();
 
     // Should display the details on the panda
 
-    expect(getByText(/Yuan Meng/)).toBeInTheDocument();
-    expect(getByText(/yoga/)).toBeInTheDocument();
-    expect(getByText(/bambou/)).toBeInTheDocument();
+    expect(screen.getByText(/Yuan Meng/)).toBeInTheDocument();
+    expect(screen.getByText(/yoga/)).toBeInTheDocument();
+    expect(screen.getByText(/bambou/)).toBeInTheDocument();
 
-    const imageElement = getByRole('img');
+    const imageElement = screen.getByRole('img');
     expect(imageElement).toBeInTheDocument();
     expect(imageElement.getAttribute('src')).toEqual(pandas[0].image);
 
-    const buttonElements = getAllByRole('button');
+    const buttonElements = screen.getAllByRole('button');
     expect(buttonElements.length).toEqual(3);
 
-    expect(getByText(/Fermer/)).toBeInTheDocument();
-    expect(getByText(/Modifier le panda/)).toBeInTheDocument();
-    expect(getByText(/Supprimer le panda/)).toBeInTheDocument();
+    expect(screen.getByText(/Fermer/)).toBeInTheDocument();
+    expect(screen.getByText(/Modifier le panda/)).toBeInTheDocument();
+    expect(screen.getByText(/Supprimer le panda/)).toBeInTheDocument();
   });
 
   test('should fail to load the details of the panda', async () => {
@@ -83,30 +85,29 @@ describe('PandaDetailsView', () => {
 
     // Pour tester ce composant on doit simuler l'appel d'une route /pandas/1
 
-    const history = createMemoryHistory({
-      initialEntries: ['/pandas/1'],
-    });
-    const { getByText } = render(
+    render(
       <ReactQueryWrapper>
-        <Router history={history}>
-          <Route path="/pandas/:id" component={PandaDetailsView} />
-        </Router>
+        <MemoryRouter initialEntries={['/pandas/1']} initialIndex={0}>
+          <Routes>
+            <Route path="/pandas/:id" element={<PandaDetailsView />} />
+          </Routes>
+        </MemoryRouter>
       </ReactQueryWrapper>,
     );
 
     // Should display a loading indicator
 
-    const loadingElement = getByText(/Loading.../i);
+    const loadingElement = screen.getByText(/Loading.../i);
     expect(loadingElement).toBeInTheDocument();
 
     // The loading indicator should disappear
 
-    await waitForElementToBeRemoved(() => getByText(/Loading.../i));
+    await waitForElementToBeRemoved(() => screen.queryByText(/Loading.../i));
     expect(loadingElement).not.toBeInTheDocument();
 
     // Should display an error message
 
-    const errorElement = getByText(/Network Error/i);
+    const errorElement = screen.getByText(/Network Error/i);
     expect(errorElement).toBeInTheDocument();
   });
 });

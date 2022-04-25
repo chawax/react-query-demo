@@ -4,6 +4,7 @@ import MockAdapter from 'axios-mock-adapter';
 import type { ReactNode } from 'react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { MemoryRouter } from 'react-router-dom';
 import '../../i18n';
 import pandas from '../../mocks/pandas.json';
 import PandasListView from './';
@@ -32,7 +33,9 @@ describe('PandasListView', () => {
 
     const { getByText, findAllByRole } = render(
       <ReactQueryWrapper>
-        <PandasListView />
+        <MemoryRouter>
+          <PandasListView />
+        </MemoryRouter>
       </ReactQueryWrapper>,
     );
 
@@ -60,7 +63,9 @@ describe('PandasListView', () => {
 
     const { getByText } = render(
       <ReactQueryWrapper>
-        <PandasListView />
+        <MemoryRouter>
+          <PandasListView />
+        </MemoryRouter>
       </ReactQueryWrapper>,
     );
 

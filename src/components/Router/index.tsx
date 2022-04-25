@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CreatePandaView from '../../views/CreatePandaView';
 import EditPandaView from '../../views/EditPandaView';
 import NotFoundView from '../../views/NotFoundView';
@@ -11,14 +11,14 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Switch>
-        <Route path="/" exact component={PandasListView} />
-        <Route path="/pandas" exact component={PandasListView} />
-        <Route path="/pandas/new" component={CreatePandaView} />
-        <Route path="/pandas/:id/edit" component={EditPandaView} />
-        <Route path="/pandas/:id" component={PandaDetailsView} />
-        <Route component={NotFoundView} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<PandasListView />} />
+        <Route path="/pandas" element={<PandasListView />} />
+        <Route path="/pandas/new" element={<CreatePandaView />} />
+        <Route path="/pandas/:id/edit" element={<EditPandaView />} />
+        <Route path="/pandas/:id" element={<PandaDetailsView />} />
+        <Route element={<NotFoundView />} />
+      </Routes>
     </BrowserRouter>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Alert, Button, Col, Container, Row, Spinner } from 'reactstrap';
 import ErrorAndRetry from '../../components/ErrorAndRetry';
 import PandaDetails from '../../components/PandaDetails';
@@ -9,24 +9,24 @@ import usePandaDetails from '../../hooks/usePandaDetails';
 
 const PandaDetailsView = () => {
   const { id } = useParams<{ id: string }>();
-  const { isLoading, isSuccess, data, error, refetch } = usePandaDetails(id);
+  const { isLoading, isSuccess, data, error, refetch } = usePandaDetails(id!);
   const { t } = useTranslation();
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const deletePandaMutation = useDeletePanda();
 
   const handleClose = () => {
-    history.push('/pandas');
+    navigate('/pandas');
   };
 
   const handleEdit = () => {
-    history.push(`/pandas/${id}/edit`);
+    navigate(`/pandas/${id}/edit`);
   };
 
   const handleDelete = async () => {
-    await deletePandaMutation.mutateAsync(id);
-    history.push('/pandas');
+    await deletePandaMutation.mutateAsync(id!);
+    navigate('/pandas');
   };
 
   return (
