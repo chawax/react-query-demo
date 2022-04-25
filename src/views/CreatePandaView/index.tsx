@@ -1,7 +1,7 @@
 import { History } from 'history';
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Alert, Spinner } from 'reactstrap';
 import PandaForm, { PandaFormValues } from '../../components/PandaForm';
 import useCreatePanda from '../../hooks/useCreatePanda';
@@ -9,7 +9,7 @@ import useCreatePanda from '../../hooks/useCreatePanda';
 const CreatePandaView = () => {
   const { t } = useTranslation();
 
-  const history: History = useHistory();
+  const navigate = useNavigate();
 
   const createPandaMutation = useCreatePanda();
 
@@ -21,14 +21,14 @@ const CreatePandaView = () => {
         image: values.image,
       };
       await createPandaMutation.mutateAsync(panda);
-      history.replace('/pandas');
+      navigate('/pandas', { replace: true });
     },
-    [createPandaMutation, history],
+    [createPandaMutation, navigate],
   );
 
   const handleCancel = useCallback(() => {
-    history.replace('/pandas');
-  }, [history]);
+    navigate('/pandas', { replace: true });
+  }, [navigate]);
 
   return (
     <div style={{ padding: 20 }}>

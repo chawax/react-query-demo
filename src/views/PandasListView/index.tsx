@@ -1,24 +1,24 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Spinner } from 'reactstrap';
 import ErrorAndRetry from '../../components/ErrorAndRetry';
 import PandasList from '../../components/PandasList';
 import usePandas from '../../hooks/usePandas';
 
 const PandasListView = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const handlePress = useCallback(
     (id: string) => {
-      history.push(`/pandas/${id}`);
+      navigate(`/pandas/${id}`);
     },
-    [history],
+    [navigate],
   );
 
   const handleNewPanda = () => {
-    history.push('/pandas/new');
+    navigate('/pandas/new');
   };
 
   const { isLoading, isSuccess, data, error, refetch } = usePandas();

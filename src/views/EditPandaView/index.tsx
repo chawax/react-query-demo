@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Alert, Spinner } from 'reactstrap';
 import ErrorAndRetry from '../../components/ErrorAndRetry';
 import PandaForm, { PandaFormValues } from '../../components/PandaForm';
@@ -10,14 +10,14 @@ import { Panda } from '../../types/Panda';
 
 const EditPandaView = () => {
   const { id } = useParams<{ id: string }>();
-  const { isLoading, isSuccess, data, error, refetch } = usePandaDetails(id);
+  const { isLoading, isSuccess, data, error, refetch } = usePandaDetails(id!);
 
   const { t } = useTranslation();
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const handleCancel = useCallback(() => {
-    history.replace(`/pandas/${id}`);
-  }, [history, id]);
+    navigate(`/pandas/${id}`, { replace: true });
+  }, [navigate, id]);
 
   const updatePandaMutation = useUpdatePanda();
 
@@ -30,9 +30,9 @@ const EditPandaView = () => {
         image: values.image,
       };
       updatePandaMutation.mutate(panda);
-      history.replace(`/pandas`);
+      navigate(`/pandas`, { replace: true });
     },
-    [updatePandaMutation, history, id],
+    [updatePandaMutation, navigate, id],
   );
 
   const initialValues: PandaFormValues | undefined = useMemo(() => {
