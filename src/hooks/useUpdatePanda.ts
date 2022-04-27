@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useMutation, useQueryClient } from 'react-query';
-import { Panda } from '../../types/Panda';
+import { Panda } from '../types/Panda';
 
 const useUpdatePanda = () => {
   const queryCache = useQueryClient();

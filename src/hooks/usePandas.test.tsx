@@ -4,8 +4,8 @@ import MockAdapter from 'axios-mock-adapter';
 import type { ReactNode } from 'react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import usePandas from '.';
-import pandas from '../../mocks/pandas.json';
+import usePandas from './usePandas';
+import pandas from '../mocks/pandas.json';
 
 // Création d'un wrapper React Query
 
