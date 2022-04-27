@@ -9,9 +9,9 @@ import type { ReactNode } from 'react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import '../../i18n';
-import pandas from '../../mocks/pandas.json';
-import PandaDetailsView from './';
+import '../i18n';
+import pandas from '../mocks/pandas.json';
+import PandaDetailsView from './PandaDetailsView';
 
 // Création d'un wrapper pour React Query
 // On désactive le mode retry
