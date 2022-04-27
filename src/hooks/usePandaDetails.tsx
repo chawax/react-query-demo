@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { useQuery } from 'react-query';
-import { Panda } from '../../types/Panda';
+import { Panda } from '../types/Panda';
 
 const usePandaDetails = (key: string) => {
   return useQuery<Panda, Error>(['pandas', key], () =>

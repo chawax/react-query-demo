@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Alert, Button, Col, Container, Row, Spinner } from 'reactstrap';
 import ErrorAndRetry from '../../components/ErrorAndRetry';
 import PandaDetails from '../../components/PandaDetails';
-import useDeletePanda from '../../hooks/useDeletePanda';
+import useDeletePanda from '../../hooks/useDeletePenda';
 import usePandaDetails from '../../hooks/usePandaDetails';
 
 const PandaDetailsView = () => {
