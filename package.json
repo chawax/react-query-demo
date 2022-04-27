@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "private": false,
   "dependencies": {
-    "axios": "0.26.1",
+    "axios": "0.27.2",
     "bootstrap": "4.6.1",
     "i18next": "21.6.16",
     "react": "17.0.2",
