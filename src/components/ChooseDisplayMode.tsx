@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import DisplayModeContext from '../../context/DisplayModeContext';
+import DisplayModeContext from '../context/DisplayModeContext';
 
 const styles = {
   enabled: {

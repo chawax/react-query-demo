@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavbarBrand } from 'reactstrap';
-import DisplayModeContext from '../../context/DisplayModeContext';
+import DisplayModeContext from '../context/DisplayModeContext';
 import ChooseDisplayMode from './ChooseDisplayMode';
 import ChooseLanguage from './ChooseLanguage';
 

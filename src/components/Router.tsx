@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CreatePandaView from '../../views/CreatePandaView';
-import EditPandaView from '../../views/EditPandaView';
-import NotFoundView from '../../views/NotFoundView';
-import PandaDetailsView from '../../views/PandaDetailsView';
-import PandasListView from '../../views/PandasListView';
-import Header from '../Header';
+import CreatePandaView from '../views/CreatePandaView';
+import EditPandaView from '../views/EditPandaView';
+import NotFoundView from '../views/NotFoundView';
+import PandaDetailsView from '../views/PandaDetailsView';
+import PandasListView from '../views/PandasListView';
+import Header from './Header';
 
 const Router = () => {
   return (
