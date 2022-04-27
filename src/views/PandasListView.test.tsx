@@ -5,9 +5,9 @@ import type { ReactNode } from 'react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
-import '../../i18n';
-import pandas from '../../mocks/pandas.json';
-import PandasListView from './';
+import '../i18n';
+import pandas from '../mocks/pandas.json';
+import PandasListView from './PandasListView';
 
 const queryClient = new QueryClient({
   defaultOptions: {

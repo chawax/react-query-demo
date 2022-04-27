@@ -2,11 +2,11 @@ import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Alert, Spinner } from 'reactstrap';
-import ErrorAndRetry from '../../components/ErrorAndRetry';
-import PandaForm, { PandaFormValues } from '../../components/PandaForm';
-import usePandaDetails from '../../hooks/usePandaDetails';
-import useUpdatePanda from '../../hooks/useUpdatePanda';
-import { Panda } from '../../types/Panda';
+import ErrorAndRetry from '../components/ErrorAndRetry';
+import PandaForm, { PandaFormValues } from '../components/PandaForm';
+import usePandaDetails from '../hooks/usePandaDetails';
+import useUpdatePanda from '../hooks/useUpdatePanda';
+import { Panda } from '../types/Panda';
 
 const EditPandaView = () => {
   const { id } = useParams<{ id: string }>();
