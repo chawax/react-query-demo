@@ -10,7 +10,7 @@
     "react-dom": "18.1.0",
     "react-hook-form": "6.15.8",
     "react-i18next": "11.16.9",
-    "react-query": "3.39.0",
+    "react-query": "3.39.1",
     "react-router-dom": "6.3.0",
     "reactstrap": "8.10.1"
   },
