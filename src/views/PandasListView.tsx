@@ -10,6 +10,12 @@ const PandasListView = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  // Hook to load pandas
+
+  const { isLoading, isSuccess, data, error, refetch } = usePandas();
+
+  // Event handlers
+
   const handlePress = useCallback(
     (id: string) => {
       navigate(`/pandas/${id}`);
@@ -21,7 +27,6 @@ const PandasListView = () => {
     navigate('/pandas/new');
   };
 
-  const { isLoading, isSuccess, data, error, refetch } = usePandas();
   return (
     <>
       {isLoading && <Spinner />}

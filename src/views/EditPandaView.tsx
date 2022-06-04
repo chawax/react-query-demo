@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Alert, Spinner } from 'reactstrap';
@@ -9,53 +9,67 @@ import useUpdatePanda from '../hooks/useUpdatePanda';
 import { Panda } from '../types/Panda';
 
 const EditPandaView = () => {
-  const { id } = useParams<{ id: string }>();
-  const { isLoading, isSuccess, data, error, refetch } = usePandaDetails(id!);
-
   const { t } = useTranslation();
-
   const navigate = useNavigate();
-  const handleCancel = useCallback(() => {
+
+  // Hook to load panda details
+
+  const { id } = useParams<{ id: string }>();
+  const {
+    isLoading: isLoadingPandaDetails,
+    isSuccess: isSuccessOnLoadingPanda,
+    isError: isErrorOnLoadingPanda,
+    data: pandaDetails,
+    error: pandaLoadingError,
+    refetch,
+  } = usePandaDetails(id!);
+
+  // Hook to update panda
+  const {
+    isLoading: isUpdatingPanda,
+    isError: isErrorOnUpdatePanda,
+    mutateAsync,
+  } = useUpdatePanda();
+
+  // Event handlers
+
+  const handleCancel = () => {
     navigate(`/pandas/${id}`, { replace: true });
-  }, [navigate, id]);
+  };
 
-  const updatePandaMutation = useUpdatePanda();
-
-  const handleSubmit = useCallback(
-    (values: PandaFormValues) => {
-      const panda: Panda = {
-        key: id,
-        name: values.name,
-        interests: values.interests.split(','),
-        image: values.image,
-      };
-      updatePandaMutation.mutate(panda);
-      navigate(`/pandas`, { replace: true });
-    },
-    [updatePandaMutation, navigate, id],
-  );
+  const handleSubmit = async (values: PandaFormValues) => {
+    const panda: Panda = {
+      key: id,
+      name: values.name,
+      interests: values.interests.split(','),
+      image: values.image,
+    };
+    await mutateAsync(panda);
+    navigate(`/pandas`, { replace: true });
+  };
 
   const initialValues: PandaFormValues | undefined = useMemo(() => {
-    if (data) {
+    if (pandaDetails) {
       return {
-        name: data.name,
-        interests: data.interests.join(','),
-        image: data.image,
+        name: pandaDetails.name,
+        interests: pandaDetails.interests.join(','),
+        image: pandaDetails.image,
       };
     } else {
       return undefined;
     }
-  }, [data]);
+  }, [pandaDetails]);
 
   return (
     <>
-      {isLoading && <Spinner />}
-      {updatePandaMutation.isLoading && <Spinner />}
-      {error && <ErrorAndRetry message={error.message} onRetry={refetch} />}
-      {updatePandaMutation.isError && (
+      {(isLoadingPandaDetails || isUpdatingPanda) && <Spinner />}
+      {isErrorOnLoadingPanda && (
+        <ErrorAndRetry message={pandaLoadingError.message} onRetry={refetch} />
+      )}
+      {isErrorOnUpdatePanda && (
         <Alert color="danger">{t('editPanda.errors.update')}</Alert>
       )}
-      {isSuccess && data && (
+      {isSuccessOnLoadingPanda && pandaDetails && (
         <div style={{ padding: 20 }}>
           <h2>{t('editPanda.title', { id })}</h2>
           <PandaForm

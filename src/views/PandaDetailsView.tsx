@@ -8,13 +8,30 @@ import useDeletePanda from '../hooks/useDeletePanda';
 import usePandaDetails from '../hooks/usePandaDetails';
 
 const PandaDetailsView = () => {
-  const { id } = useParams<{ id: string }>();
-  const { isLoading, isSuccess, data, error, refetch } = usePandaDetails(id!);
   const { t } = useTranslation();
-
   const navigate = useNavigate();
 
-  const deletePandaMutation = useDeletePanda();
+  // Hook to load panda details
+
+  const { id } = useParams<{ id: string }>();
+  const {
+    isLoading: isLoadingPanda,
+    isSuccess: isSuccessOnLoadingPanda,
+    isError: isErrorOnLoadingPanda,
+    data: pandaDetails,
+    error: loadingPandaError,
+    refetch: refetchPanda,
+  } = usePandaDetails(id!);
+
+  // Hook to delete panda
+
+  const {
+    isLoading: isDeletingPanda,
+    isError: isErrorOnDeletingPanda,
+    mutateAsync: mutateDeletePanda,
+  } = useDeletePanda();
+
+  // Event handlers
 
   const handleClose = () => {
     navigate('/pandas');
@@ -25,21 +42,25 @@ const PandaDetailsView = () => {
   };
 
   const handleDelete = async () => {
-    await deletePandaMutation.mutateAsync(id!);
+    await mutateDeletePanda(id!);
     navigate('/pandas');
   };
 
   return (
     <>
-      {isLoading && <Spinner />}
-      {deletePandaMutation.isLoading && <Spinner />}
-      {error && <ErrorAndRetry message={error.message} onRetry={refetch} />}
-      {deletePandaMutation.isError && (
+      {(isLoadingPanda || isDeletingPanda) && <Spinner />}
+      {isErrorOnLoadingPanda && loadingPandaError && (
+        <ErrorAndRetry
+          message={loadingPandaError.message}
+          onRetry={refetchPanda}
+        />
+      )}
+      {isErrorOnDeletingPanda && (
         <Alert color="danger">{t('pandaDetails.error.delete')}</Alert>
       )}
-      {isSuccess && data && (
+      {isSuccessOnLoadingPanda && pandaDetails && (
         <>
-          <PandaDetails panda={data} />
+          <PandaDetails panda={pandaDetails} />
           <Container>
             <Row>
               <Col style={{ padding: 10 }}>
