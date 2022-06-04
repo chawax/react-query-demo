@@ -1,4 +1,8 @@
-import { render, waitForElementToBeRemoved } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import type { ReactNode } from 'react';
@@ -31,7 +35,7 @@ describe('PandasListView', () => {
   test('should render a list of pandas', async () => {
     axiosMock.onGet('http://localhost:3004/pandas').reply(200, pandas);
 
-    const { getByText, findAllByRole } = render(
+    render(
       <ReactQueryWrapper>
         <MemoryRouter>
           <PandasListView />
@@ -41,27 +45,27 @@ describe('PandasListView', () => {
 
     // Should display a loading indicator
 
-    const loadingElement = getByText(/Loading.../i);
+    const loadingElement = screen.getByText(/Loading.../i);
     expect(loadingElement).toBeInTheDocument();
 
     // The loading indicator should disappear
 
-    await waitForElementToBeRemoved(() => getByText(/Loading.../i));
+    await waitForElementToBeRemoved(() => screen.queryByText(/Loading.../i));
     expect(loadingElement).not.toBeInTheDocument();
 
     // Should display one list with a listitem for every panda
 
-    const listElements = await findAllByRole('list');
+    const listElements = await screen.findAllByRole('list');
     expect(listElements.length).toBe(1);
 
-    const itemElements = await findAllByRole('listitem');
+    const itemElements = await screen.findAllByRole('listitem');
     expect(itemElements.length).toBe(pandas.length);
   });
 
   test('should fail to load pandas', async () => {
     axiosMock.onGet('http://localhost:3004/pandas').networkError();
 
-    const { getByText } = render(
+    render(
       <ReactQueryWrapper>
         <MemoryRouter>
           <PandasListView />
@@ -71,17 +75,17 @@ describe('PandasListView', () => {
 
     // Should display a loading indicator
 
-    const loadingElement = getByText(/Loading.../i);
+    const loadingElement = screen.getByText(/Loading.../i);
     expect(loadingElement).toBeInTheDocument();
 
     // The loading indicator should disappear
 
-    await waitForElementToBeRemoved(() => getByText(/Loading.../i));
+    await waitForElementToBeRemoved(() => screen.queryByText(/Loading.../i));
     expect(loadingElement).not.toBeInTheDocument();
 
     // Should display an error message
 
-    const errorElement = getByText(/Network Error/i);
+    const errorElement = screen.getByText(/Network Error/i);
     expect(errorElement).toBeInTheDocument();
   });
 });
