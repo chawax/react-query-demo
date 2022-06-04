@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Alert, Spinner } from 'reactstrap';
@@ -7,35 +7,33 @@ import useCreatePanda from '../hooks/useCreatePanda';
 
 const CreatePandaView = () => {
   const { t } = useTranslation();
-
   const navigate = useNavigate();
 
-  const createPandaMutation = useCreatePanda();
+  // Hook to create panda
 
-  const handleSubmit = useCallback(
-    async (values: PandaFormValues) => {
-      const panda = {
-        name: values.name,
-        interests: values.interests.split(','),
-        image: values.image,
-      };
-      await createPandaMutation.mutateAsync(panda);
-      navigate('/pandas', { replace: true });
-    },
-    [createPandaMutation, navigate],
-  );
+  const { isLoading, isError, mutateAsync } = useCreatePanda();
 
-  const handleCancel = useCallback(() => {
+  // Event handlers
+
+  const handleSubmit = async (values: PandaFormValues) => {
+    const panda = {
+      name: values.name,
+      interests: values.interests.split(','),
+      image: values.image,
+    };
+    await mutateAsync(panda);
     navigate('/pandas', { replace: true });
-  }, [navigate]);
+  };
+
+  const handleCancel = () => {
+    navigate('/pandas', { replace: true });
+  };
 
   return (
     <div style={{ padding: 20 }}>
       <h2>{t('createPanda.title')}</h2>
-      {createPandaMutation.isLoading && <Spinner />}
-      {createPandaMutation.isError && (
-        <Alert color="danger">{t('createPanda.error')}</Alert>
-      )}
+      {isLoading && <Spinner />}
+      {isError && <Alert color="danger">{t('createPanda.error')}</Alert>}
       <PandaForm onSubmit={handleSubmit} onCancel={handleCancel} />
     </div>
   );

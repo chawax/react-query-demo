@@ -10,7 +10,7 @@ const useUpdatePanda = () => {
         .put(`http://localhost:3004/pandas/${panda.key}`, panda)
         .then((response) => response.data),
     {
-      onSuccess: (result) => {
+      onSuccess: () => {
         queryCache.invalidateQueries('pandas');
       },
     },
