@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import Router from './components/Router';
@@ -8,10 +7,12 @@ import { DisplayModeProvider } from './context/DisplayModeProvider';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      refetchOnWindowFocus: false,
       staleTime: 5 * 60 * 1000,
     },
   },
 });
+
 const ReactQueryWrapper = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     {children}
@@ -19,7 +20,7 @@ const ReactQueryWrapper = ({ children }: { children: ReactNode }) => (
   </QueryClientProvider>
 );
 
-function App() {
+const App = () => {
   return (
     <ReactQueryWrapper>
       <DisplayModeProvider>
@@ -27,6 +28,6 @@ function App() {
       </DisplayModeProvider>
     </ReactQueryWrapper>
   );
-}
+};
 
 export default App;
