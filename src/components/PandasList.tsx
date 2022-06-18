@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Panda } from '../../types/Panda';
+import { Panda } from '../types/Panda';
 import PandaItem from './PandaItem';
 
 export type PandasListProps = {

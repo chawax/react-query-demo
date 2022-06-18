@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useMutation, useQueryClient } from 'react-query';
-import { Panda } from '../../types/Panda';
+import { Panda } from '../types/Panda';
 
 const useUpdatePanda = () => {
   const queryCache = useQueryClient();
@@ -10,7 +10,7 @@ const useUpdatePanda = () => {
         .put(`http://localhost:3004/pandas/${panda.key}`, panda)
         .then((response) => response.data),
     {
-      onSuccess: (result) => {
+      onSuccess: () => {
         queryCache.invalidateQueries('pandas');
       },
     },
