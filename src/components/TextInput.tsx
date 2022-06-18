@@ -8,11 +8,11 @@ export type TextInputProps = {
   value?: string;
   required?: boolean;
   error?: string;
-  innerRef?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
 };
 
 const TextInput = (props: TextInputProps) => {
-  const { label, error, name, required, value, placeholder, innerRef } = props;
+  const { label, error, name, required, value, placeholder, ...otherProps } =
+    props;
   let className = '';
   if (error) {
     className = error ? 'is-invalid' : 'is-valid';
@@ -30,7 +30,7 @@ const TextInput = (props: TextInputProps) => {
         value={value}
         placeholder={placeholder}
         className={className}
-        innerRef={innerRef}
+        {...otherProps}
       />
       {error && <div className="invalid-feedback">{error}</div>}
     </FormGroup>
