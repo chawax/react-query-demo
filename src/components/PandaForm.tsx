@@ -22,8 +22,7 @@ const PandaForm = (props: PandaFormProps) => {
   const {
     register,
     handleSubmit,
-    errors,
-    formState: { isValid },
+    formState: { errors, isValid },
   } = useForm<PandaFormValues>({
     mode: 'onChange',
     defaultValues: initialValues,
