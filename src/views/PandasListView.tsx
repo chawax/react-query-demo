@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import * as React from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -18,12 +18,9 @@ const PandasListView = () => {
 
   // Event handlers
 
-  const handlePress = useCallback(
-    (id: string) => {
-      navigate(`/pandas/${id}`);
-    },
-    [navigate],
-  );
+  const handlePress = (id: string) => {
+    navigate(`/pandas/${id}`);
+  };
 
   const handleNewPanda = () => {
     navigate('/pandas/new');

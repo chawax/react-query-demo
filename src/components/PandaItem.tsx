@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Badge, ListGroupItem } from 'reactstrap';
 
 export type PandaItemProps = {
