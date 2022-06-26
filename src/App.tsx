@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
+
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+
 import Router from './components/Router';
 import { DisplayModeProvider } from './context/DisplayModeProvider';
 
