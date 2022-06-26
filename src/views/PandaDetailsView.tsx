@@ -1,6 +1,7 @@
+import { Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Alert, Button, Col, Container, Row, Spinner } from 'reactstrap';
+import { Alert, Button, Col, Container, Row } from 'reactstrap';
 
 import ErrorAndRetry from '../components/ErrorAndRetry';
 import PandaDetails from '../components/PandaDetails';

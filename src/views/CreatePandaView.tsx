@@ -1,6 +1,7 @@
+import { Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Alert, Spinner } from 'reactstrap';
+import { Alert } from 'reactstrap';
 
 import PandaForm, { PandaFormValues } from '../components/PandaForm';
 import useCreatePanda from '../hooks/useCreatePanda';
