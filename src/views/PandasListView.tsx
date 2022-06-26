@@ -1,4 +1,4 @@
-import { Spinner } from '@chakra-ui/react';
+import { Container, Flex, HStack, Spinner, VStack } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -26,25 +26,20 @@ const PandasListView = () => {
   };
 
   return (
-    <>
+    <Flex width="full">
       {isLoading && <Spinner />}
       {error && <ErrorAndRetry message={error.message} onRetry={refetch} />}
       {isSuccess && data && (
-        <>
+        <VStack width="100%">
           <PandasList pandas={data} onPress={handlePress} />
-          <div style={{ padding: 20 }}>
-            <Button
-              colorScheme="blue"
-              marginRight={10}
-              marginTop={10}
-              onClick={handleNewPanda}
-            >
+          <HStack>
+            <Button colorScheme="blue" marginTop={2} onClick={handleNewPanda}>
               {t('pandaList.addNewPanda')}
             </Button>
-          </div>
-        </>
+          </HStack>
+        </VStack>
       )}
-    </>
+    </Flex>
   );
 };
 

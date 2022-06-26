@@ -1,4 +1,9 @@
-import { FormGroup, Input, Label } from 'reactstrap';
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from '@chakra-ui/react';
 
 export type TextInputProps = {
   label: string;
@@ -9,30 +14,32 @@ export type TextInputProps = {
   error?: string;
 };
 
-const TextInput = (props: TextInputProps) => {
-  const { label, error, name, required, value, placeholder, ...otherProps } =
-    props;
-  let className = '';
-  if (error) {
-    className = error ? 'is-invalid' : 'is-valid';
-  }
+const TextInput = ({
+  label,
+  error,
+  name,
+  required,
+  value,
+  placeholder,
+  ...otherProps
+}: TextInputProps) => {
+  const isError = error !== undefined;
   return (
-    <FormGroup>
-      <Label for={name}>
+    <FormControl isInvalid={isError}>
+      <FormLabel htmlFor={name}>
         {label}
         {required && <sup> *</sup>}
-      </Label>
+      </FormLabel>
       <Input
         id={name}
         name={name}
         type="text"
         value={value}
         placeholder={placeholder}
-        className={className}
         {...otherProps}
       />
-      {error && <div className="invalid-feedback">{error}</div>}
-    </FormGroup>
+      <FormErrorMessage>{error}</FormErrorMessage>
+    </FormControl>
   );
 };
 

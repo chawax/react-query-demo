@@ -1,5 +1,9 @@
-import { Alert } from 'reactstrap';
+import { Box } from '@chakra-ui/react';
 
-const NotFoundView = () => <Alert color="danger">Page introuvable !</Alert>;
+const NotFoundView = () => (
+  <Box bgColor="tomato" color="white">
+    Page introuvable !
+  </Box>
+);
 
 export default NotFoundView;

@@ -1,37 +1,38 @@
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Flex, Text, VStack } from '@chakra-ui/react';
 
 import { Panda } from '../types/Panda';
 import PandaItem from './PandaItem';
 
 export type PandasListProps = {
   /**
-   * Liste des pandas
+   * List of pandas
    */
   pandas: Panda[];
 
   /**
-   * Evénement déclenché lorsqu'on clique sur un panda dans la liste
-   * @param id identifiant du panda
+   * A panda was pressed in the list
+   * @param id id of the panda
    */
   onPress(id: string): void;
 };
 
-const PandasList: React.FC<PandasListProps> = (props: PandasListProps) => {
-  const { pandas } = props;
+const PandasList = ({ pandas, onPress }: PandasListProps) => {
   return (
-    <ListGroup>
-      {pandas.length > 0 ? (
-        pandas.map((panda: Panda) => (
-          <PandaItem
-            key={panda.key}
-            name={panda.name}
-            onPress={() => props.onPress(panda.key!)}
-          />
-        ))
-      ) : (
-        <ListGroupItem>Aucun panda n'a été trouvé !</ListGroupItem>
-      )}
-    </ListGroup>
+    <Flex width="full" role="list">
+      <VStack width="inherit">
+        {pandas.length > 0 ? (
+          pandas.map((panda: Panda) => (
+            <PandaItem
+              key={panda.key}
+              name={panda.name}
+              onPress={() => onPress(panda.key!)}
+            />
+          ))
+        ) : (
+          <Text>Aucun panda n'a été trouvé !</Text>
+        )}
+      </VStack>
+    </Flex>
   );
 };
 

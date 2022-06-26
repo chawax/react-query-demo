@@ -1,4 +1,4 @@
-import { Badge, Jumbotron } from 'reactstrap';
+import { Heading, HStack, Image, Tag, VStack } from '@chakra-ui/react';
 
 import { Panda } from '../types/Panda';
 
@@ -6,23 +6,25 @@ export type PandaDetailsProps = {
   panda: Panda;
 };
 
-const PandaDetails = (props: PandaDetailsProps) => {
+const PandaDetails = ({
+  panda: { name, interests, image },
+}: PandaDetailsProps) => {
   return (
-    <Jumbotron>
-      <h1>{props.panda.name}</h1>
-      {props.panda.interests && (
-        <div>
-          {props.panda.interests.map((item, index) => (
-            <Badge key={index} pill color="danger" style={{ marginRight: 5 }}>
+    <VStack spacing={10}>
+      <Heading as="h1" colorScheme="blue">
+        {name}
+      </Heading>
+      {interests && (
+        <HStack spacing={5}>
+          {interests.map((item) => (
+            <Tag key={item} colorScheme="blue">
               {item}
-            </Badge>
+            </Tag>
           ))}
-        </div>
+        </HStack>
       )}
-      <div style={{ marginTop: 10 }}>
-        <img src={props.panda.image} alt={props.panda.name} />
-      </div>
-    </Jumbotron>
+      <Image src={image} alt={name} marginTop={10} maxHeight={200} />
+    </VStack>
   );
 };
 

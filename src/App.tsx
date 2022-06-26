@@ -7,7 +7,6 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import Router from './components/Router';
 import { DisplayModeProvider } from './context/DisplayModeProvider';
 
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

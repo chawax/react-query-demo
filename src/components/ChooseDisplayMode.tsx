@@ -18,18 +18,18 @@ export type ChooseDisplayModeProps = {
   label: string;
 };
 
-const ChooseDisplayMode = (props: ChooseDisplayModeProps) => {
+const ChooseDisplayMode = ({ code, label }: ChooseDisplayModeProps) => {
   const { displayMode, toggleDisplayMode } =
     React.useContext(DisplayModeContext);
 
   const style: React.CSSProperties =
-    displayMode === props.code
+    displayMode === code
       ? (styles.enabled as React.CSSProperties)
       : (styles.disabled as React.CSSProperties);
 
   return (
     <span style={style} onClick={toggleDisplayMode}>
-      {props.label}
+      {label}
     </span>
   );
 };

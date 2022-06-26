@@ -16,7 +16,7 @@ export type ChooseLanguageProps = {
   label: string;
 };
 
-const ChooseLanguage = (props: ChooseLanguageProps) => {
+const ChooseLanguage = ({ code, label }: ChooseLanguageProps) => {
   const { i18n } = useTranslation();
 
   const handleChangeLanguage = (language: string) => {
@@ -24,7 +24,7 @@ const ChooseLanguage = (props: ChooseLanguageProps) => {
   };
 
   const style: React.CSSProperties =
-    i18n.language === props.code
+    i18n.language === code
       ? (styles.languageEnabled as React.CSSProperties)
       : (styles.languageDisabled as React.CSSProperties);
 
@@ -32,10 +32,10 @@ const ChooseLanguage = (props: ChooseLanguageProps) => {
     <span
       style={style}
       onClick={() => {
-        handleChangeLanguage(props.code);
+        handleChangeLanguage(code);
       }}
     >
-      {props.label}
+      {label}
     </span>
   );
 };

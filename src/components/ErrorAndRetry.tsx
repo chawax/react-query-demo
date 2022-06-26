@@ -1,23 +1,24 @@
-import { Button } from '@chakra-ui/react';
+import { Button, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Alert } from 'reactstrap';
+
+import Alert from './Alert';
 
 type ErrorAndRetryProps = {
   message: string;
   onRetry?: () => void;
 };
 
-const ErrorAndRetry = (props: ErrorAndRetryProps) => {
+const ErrorAndRetry = ({ message, onRetry }: ErrorAndRetryProps) => {
   const { t } = useTranslation();
   return (
-    <Alert color="danger">
-      {props.message}
-      {props.onRetry && (
-        <Button colorScheme="red" onClick={props.onRetry} size="sm">
+    <VStack padding={10}>
+      <Alert message={message} />
+      {onRetry && (
+        <Button colorScheme="red" onClick={onRetry} size="sm">
           {t('common.retry')}
         </Button>
       )}
-    </Alert>
+    </VStack>
   );
 };
 

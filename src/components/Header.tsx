@@ -1,30 +1,26 @@
 import * as React from 'react';
 
+import { Flex, Heading, Spacer, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Nav, Navbar, NavbarBrand } from 'reactstrap';
 
 import DisplayModeContext from '../context/DisplayModeContext';
 import ChooseDisplayMode from './ChooseDisplayMode';
 import ChooseLanguage from './ChooseLanguage';
 
-const Header: React.FC = () => {
+const Header = () => {
   const { t } = useTranslation();
   const { displayMode } = React.useContext(DisplayModeContext);
   const navbarColor = displayMode === 'dark' ? 'dark' : 'light';
   const textColor = displayMode === 'dark' ? '#FFF' : '#000';
+
   return (
-    <Navbar
-      color={navbarColor}
-      expand="md"
-      className="d-flex justify-content-between"
-    >
+    <Flex width="inherit" padding={5} bgColor="blue.500">
       <Link to="/">
-        <NavbarBrand style={{ color: textColor }}>
-          <h1>{t('app.title')}</h1>
-        </NavbarBrand>
+        <Heading as="h1">{t('app.title')}</Heading>
       </Link>
-      <Nav style={{ color: textColor, flexDirection: 'column' }}>
+      <Spacer />
+      <VStack>
         <div>
           <ChooseLanguage code="fr" label="FR" />
           &nbsp;|&nbsp;
@@ -35,8 +31,8 @@ const Header: React.FC = () => {
           &nbsp;|&nbsp;
           <ChooseDisplayMode code="light" label="LIGHT" />
         </div>
-      </Nav>
-    </Navbar>
+      </VStack>{' '}
+    </Flex>
   );
 };
 

@@ -1,7 +1,6 @@
-import { Spinner } from '@chakra-ui/react';
+import { Box, Container, Heading, Spinner, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Alert } from 'reactstrap';
 
 import PandaForm, { PandaFormValues } from '../components/PandaForm';
 import useCreatePanda from '../hooks/useCreatePanda';
@@ -31,12 +30,16 @@ const CreatePandaView = () => {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>{t('createPanda.title')}</h2>
+    <Container>
+      <Heading as="h2">{t('createPanda.title')}</Heading>
       {isLoading && <Spinner />}
-      {isError && <Alert color="danger">{t('createPanda.error')}</Alert>}
+      {isError && (
+        <Box bg="tomato" color="white">
+          {t('createPanda.error')}
+        </Box>
+      )}
       <PandaForm onSubmit={handleSubmit} onCancel={handleCancel} />
-    </div>
+    </Container>
   );
 };
 
