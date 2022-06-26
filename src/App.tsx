@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
 
+import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import Router from './components/Router';
 import { DisplayModeProvider } from './context/DisplayModeProvider';
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,9 +27,11 @@ const ReactQueryWrapper = ({ children }: { children: ReactNode }) => (
 const App = () => {
   return (
     <ReactQueryWrapper>
-      <DisplayModeProvider>
-        <Router />
-      </DisplayModeProvider>
+      <ChakraProvider>
+        <DisplayModeProvider>
+          <Router />
+        </DisplayModeProvider>
+      </ChakraProvider>
     </ReactQueryWrapper>
   );
 };
