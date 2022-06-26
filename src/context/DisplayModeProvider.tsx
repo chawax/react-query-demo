@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { DisplayMode } from '../types/DisplayMode';
 import DisplayModeContext from './DisplayModeContext';
 

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { DisplayMode } from '../types/DisplayMode';
 
 type DisplayModeContextProps = {
