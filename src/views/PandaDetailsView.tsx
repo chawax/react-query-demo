@@ -1,7 +1,7 @@
-import { Spinner } from '@chakra-ui/react';
+import { Button, Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Alert, Button, Col, Container, Row } from 'reactstrap';
+import { Alert, Col, Container, Row } from 'reactstrap';
 
 import ErrorAndRetry from '../components/ErrorAndRetry';
 import PandaDetails from '../components/PandaDetails';
@@ -65,14 +65,14 @@ const PandaDetailsView = () => {
           <Container>
             <Row>
               <Col style={{ padding: 10 }}>
-                <Button color="primary" onClick={handleClose}>
+                <Button colorScheme="blue" onClick={handleClose}>
                   {t('common.close')}
                 </Button>
               </Col>
             </Row>
             <Row>
               <Col style={{ padding: 10 }}>
-                <Button color="primary" onClick={handleEdit}>
+                <Button colorScheme="blue" onClick={handleEdit}>
                   {t('pandaDetails.editPanda')}
                 </Button>
               </Col>
@@ -80,7 +80,7 @@ const PandaDetailsView = () => {
 
             <Row>
               <Col style={{ padding: 10 }}>
-                <Button color="primary" onClick={handleDelete}>
+                <Button colorScheme="blue" onClick={handleDelete}>
                   {t('pandaDetails.deletePanda')}
                 </Button>
               </Col>

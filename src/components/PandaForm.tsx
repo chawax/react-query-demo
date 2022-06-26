@@ -1,6 +1,6 @@
+import { Button } from '@chakra-ui/react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'reactstrap';
 
 import TextInput from './TextInput';
 
@@ -87,10 +87,12 @@ const PandaForm = (props: PandaFormProps) => {
           },
         }}
       />
-      <Button color="primary" style={{ marginRight: 10 }} disabled={!isValid}>
+      <Button colorScheme="blue" marginRight={10} disabled={!isValid}>
         {t('common.submit')}
       </Button>
-      <Button onClick={onCancel}>{t('common.cancel')}</Button>
+      <Button colorScheme="gray" onClick={onCancel}>
+        {t('common.cancel')}
+      </Button>
     </form>
   );
 };

@@ -1,5 +1,6 @@
+import { Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Alert, Button } from 'reactstrap';
+import { Alert } from 'reactstrap';
 
 type ErrorAndRetryProps = {
   message: string;
@@ -12,12 +13,7 @@ const ErrorAndRetry = (props: ErrorAndRetryProps) => {
     <Alert color="danger">
       {props.message}
       {props.onRetry && (
-        <Button
-          color="danger"
-          onClick={props.onRetry}
-          className="float-right"
-          size="sm"
-        >
+        <Button colorScheme="red" onClick={props.onRetry} size="sm">
           {t('common.retry')}
         </Button>
       )}
