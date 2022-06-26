@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Badge, Jumbotron } from 'reactstrap';
 
 import { Panda } from '../types/Panda';

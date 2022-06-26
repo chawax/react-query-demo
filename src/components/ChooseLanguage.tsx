@@ -1,5 +1,3 @@
-import React, { useCallback } from 'react';
-
 import { useTranslation } from 'react-i18next';
 
 const styles = {
@@ -21,12 +19,9 @@ export type ChooseLanguageProps = {
 const ChooseLanguage = (props: ChooseLanguageProps) => {
   const { i18n } = useTranslation();
 
-  const handleChangeLanguage = useCallback(
-    (language: string) => {
-      i18n.changeLanguage(language);
-    },
-    [i18n],
-  );
+  const handleChangeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+  };
 
   const style: React.CSSProperties =
     i18n.language === props.code

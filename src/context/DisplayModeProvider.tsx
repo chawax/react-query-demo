@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 
 import { DisplayMode } from '../types/DisplayMode';
 import DisplayModeContext from './DisplayModeContext';
@@ -8,7 +8,7 @@ export type DisplayModeProviderProps = {
 };
 
 export const DisplayModeProvider = (props: DisplayModeProviderProps) => {
-  const [displayMode, setDisplayMode] = useState<DisplayMode>('dark');
+  const [displayMode, setDisplayMode] = React.useState<DisplayMode>('dark');
   const toggleDisplayMode = () => {
     setDisplayMode(displayMode === 'dark' ? 'light' : 'dark');
   };

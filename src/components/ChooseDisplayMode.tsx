@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
 
 import DisplayModeContext from '../context/DisplayModeContext';
 
@@ -19,7 +19,8 @@ export type ChooseDisplayModeProps = {
 };
 
 const ChooseDisplayMode = (props: ChooseDisplayModeProps) => {
-  const { displayMode, toggleDisplayMode } = useContext(DisplayModeContext);
+  const { displayMode, toggleDisplayMode } =
+    React.useContext(DisplayModeContext);
 
   const style: React.CSSProperties =
     displayMode === props.code

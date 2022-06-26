@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ import ChooseLanguage from './ChooseLanguage';
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
-  const { displayMode } = useContext(DisplayModeContext);
+  const { displayMode } = React.useContext(DisplayModeContext);
   const navbarColor = displayMode === 'dark' ? 'dark' : 'light';
   const textColor = displayMode === 'dark' ? '#FFF' : '#000';
   return (

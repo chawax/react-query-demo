@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Alert } from 'reactstrap';
 
 const NotFoundView = () => <Alert color="danger">Page introuvable !</Alert>;

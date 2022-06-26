@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { FormGroup, Input, Label } from 'reactstrap';
 
 export type TextInputProps = {

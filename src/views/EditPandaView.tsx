@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import * as React from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -50,7 +50,7 @@ const EditPandaView = () => {
     navigate(`/pandas`, { replace: true });
   };
 
-  const initialValues: PandaFormValues | undefined = useMemo(() => {
+  const initialValues: PandaFormValues | undefined = React.useMemo(() => {
     if (pandaDetails) {
       return {
         name: pandaDetails.name,
