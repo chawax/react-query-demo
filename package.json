@@ -38,7 +38,7 @@
     "react-test-renderer": "18.2.0",
     "ts-jest": "28.0.5",
     "typescript": "4.7.4",
-    "vite": "2.9.12",
+    "vite": "2.9.13",
     "web-vitals": "2.1.4"
   },
   "scripts": {
