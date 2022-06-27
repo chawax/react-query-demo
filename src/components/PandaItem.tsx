@@ -2,7 +2,7 @@ import { Avatar, Box, HStack, Text } from '@chakra-ui/react';
 
 export type PandaItemProps = {
   name: string;
-  onPress(): void;
+  onPress: () => void;
 };
 
 const PandaItem = ({ name, onPress }: PandaItemProps) => (

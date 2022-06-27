@@ -12,8 +12,8 @@ export type PandaFormValues = {
 
 export type PandaFormProps = {
   initialValues?: PandaFormValues;
-  onCancel(): void;
-  onSubmit(values: PandaFormValues): void;
+  onCancel: () => void;
+  onSubmit: (values: PandaFormValues) => void;
 };
 
 const PandaForm = ({ onCancel, onSubmit, initialValues }: PandaFormProps) => {

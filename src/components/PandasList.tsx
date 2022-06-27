@@ -13,7 +13,7 @@ export type PandasListProps = {
    * A panda was pressed in the list
    * @param id id of the panda
    */
-  onPress(id: string): void;
+  onPress: (id: string) => void;
 };
 
 const PandasList = ({ pandas, onPress }: PandasListProps) => {
