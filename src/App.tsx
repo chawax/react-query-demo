@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import Router from './components/Router';
-import { DisplayModeProvider } from './context/DisplayModeProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,9 +26,7 @@ const App = () => {
   return (
     <ReactQueryWrapper>
       <ChakraProvider>
-        <DisplayModeProvider>
-          <Router />
-        </DisplayModeProvider>
+        <Router />
       </ChakraProvider>
     </ReactQueryWrapper>
   );
