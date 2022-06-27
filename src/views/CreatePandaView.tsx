@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Spinner, VStack } from '@chakra-ui/react';
+import { Box, Container, Heading, Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
