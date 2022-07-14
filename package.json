@@ -1,18 +1,20 @@
 {
   "name": "react-query-demo",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "private": false,
   "dependencies": {
+    "@chakra-ui/react": "^2.2.4",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "axios": "0.27.2",
-    "bootstrap": "4.6.1",
+    "framer-motion": "^6.3.15",
     "i18next": "21.8.14",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "7.33.1",
     "react-i18next": "11.18.1",
     "react-query": "3.39.1",
-    "react-router-dom": "6.3.0",
-    "reactstrap": "8.10.1"
+    "react-router-dom": "6.3.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.4",
@@ -23,7 +25,6 @@
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "@types/react-router-dom": "5.3.3",
-    "@types/reactstrap": "8.7.2",
     "@vitejs/plugin-react": "2.0.0",
     "axios-mock-adapter": "1.21.1",
     "eslint-config-prettier": "8.5.0",
@@ -45,7 +46,7 @@
     "start": "vite",
     "build": "tsc && vite build",
     "test": "jest",
-    "serve": "vite preview",
+    "serve": "npm run build && vite preview",
     "json-server": "./node_modules/.bin/json-server --watch ./json-server/db.json --port 3004 --id key",
     "prepare": "husky install",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",

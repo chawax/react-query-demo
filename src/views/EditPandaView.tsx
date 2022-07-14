@@ -1,9 +1,10 @@
 import * as React from 'react';
 
+import { Container, Heading, Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Alert, Spinner } from 'reactstrap';
 
+import Alert from '../components/Alert';
 import ErrorAndRetry from '../components/ErrorAndRetry';
 import PandaForm, { PandaFormValues } from '../components/PandaForm';
 import usePandaDetails from '../hooks/usePandaDetails';
@@ -63,25 +64,21 @@ const EditPandaView = () => {
   }, [pandaDetails]);
 
   return (
-    <>
+    <Container>
+      <Heading as="h2">{t('editPanda.title', { id })}</Heading>
       {(isLoadingPandaDetails || isUpdatingPanda) && <Spinner />}
       {isErrorOnLoadingPanda && (
         <ErrorAndRetry message={pandaLoadingError.message} onRetry={refetch} />
       )}
-      {isErrorOnUpdatePanda && (
-        <Alert color="danger">{t('editPanda.errors.update')}</Alert>
-      )}
+      {isErrorOnUpdatePanda && <Alert message={t('editPanda.errors.update')} />}
       {isSuccessOnLoadingPanda && pandaDetails && (
-        <div style={{ padding: 20 }}>
-          <h2>{t('editPanda.title', { id })}</h2>
-          <PandaForm
-            initialValues={initialValues}
-            onSubmit={handleSubmit}
-            onCancel={handleCancel}
-          />
-        </div>
+        <PandaForm
+          initialValues={initialValues}
+          onCancel={handleCancel}
+          onSubmit={handleSubmit}
+        />
       )}
-    </>
+    </Container>
   );
 };
 

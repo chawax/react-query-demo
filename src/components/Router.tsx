@@ -1,3 +1,4 @@
+import { Box, Flex } from '@chakra-ui/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import CreatePandaView from '../views/CreatePandaView';
@@ -11,14 +12,16 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<PandasListView />} />
-        <Route path="/pandas" element={<PandasListView />} />
-        <Route path="/pandas/new" element={<CreatePandaView />} />
-        <Route path="/pandas/:id/edit" element={<EditPandaView />} />
-        <Route path="/pandas/:id" element={<PandaDetailsView />} />
-        <Route element={<NotFoundView />} />
-      </Routes>
+      <Flex width="full" padding={5}>
+        <Routes>
+          <Route path="/" element={<PandasListView />} />
+          <Route path="/pandas" element={<PandasListView />} />
+          <Route path="/pandas/new" element={<CreatePandaView />} />
+          <Route path="/pandas/:id/edit" element={<EditPandaView />} />
+          <Route path="/pandas/:id" element={<PandaDetailsView />} />
+          <Route element={<NotFoundView />} />
+        </Routes>
+      </Flex>
     </BrowserRouter>
   );
 };

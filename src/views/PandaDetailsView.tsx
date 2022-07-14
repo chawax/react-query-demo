@@ -1,7 +1,8 @@
+import { Button, Container, Spinner, Stack, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Alert, Button, Col, Container, Row, Spinner } from 'reactstrap';
 
+import Alert from '../components/Alert';
 import ErrorAndRetry from '../components/ErrorAndRetry';
 import PandaDetails from '../components/PandaDetails';
 import useDeletePanda from '../hooks/useDeletePanda';
@@ -47,7 +48,7 @@ const PandaDetailsView = () => {
   };
 
   return (
-    <>
+    <Container>
       {(isLoadingPanda || isDeletingPanda) && <Spinner />}
       {isErrorOnLoadingPanda && loadingPandaError && (
         <ErrorAndRetry
@@ -56,38 +57,28 @@ const PandaDetailsView = () => {
         />
       )}
       {isErrorOnDeletingPanda && (
-        <Alert color="danger">{t('pandaDetails.error.delete')}</Alert>
+        <Alert message={t('pandaDetails.error.delete')} />
       )}
       {isSuccessOnLoadingPanda && pandaDetails && (
-        <>
+        <VStack spacing={10}>
           <PandaDetails panda={pandaDetails} />
-          <Container>
-            <Row>
-              <Col style={{ padding: 10 }}>
-                <Button color="primary" onClick={handleClose}>
-                  {t('common.close')}
-                </Button>
-              </Col>
-            </Row>
-            <Row>
-              <Col style={{ padding: 10 }}>
-                <Button color="primary" onClick={handleEdit}>
-                  {t('pandaDetails.editPanda')}
-                </Button>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col style={{ padding: 10 }}>
-                <Button color="primary" onClick={handleDelete}>
-                  {t('pandaDetails.deletePanda')}
-                </Button>
-              </Col>
-            </Row>
-          </Container>
-        </>
+          <Stack
+            direction={{ base: 'column', md: 'row' }}
+            spacing={{ base: 5, md: 10 }}
+          >
+            <Button colorScheme="blue" onClick={handleClose}>
+              {t('common.close')}
+            </Button>
+            <Button colorScheme="blue" onClick={handleEdit}>
+              {t('pandaDetails.editPanda')}
+            </Button>
+            <Button colorScheme="blue" onClick={handleDelete}>
+              {t('pandaDetails.deletePanda')}
+            </Button>
+          </Stack>
+        </VStack>
       )}
-    </>
+    </Container>
   );
 };
 

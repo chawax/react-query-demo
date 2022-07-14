@@ -1,27 +1,17 @@
-import { Badge, ListGroupItem } from 'reactstrap';
+import { Avatar, Box, HStack, Text } from '@chakra-ui/react';
 
 export type PandaItemProps = {
   name: string;
-  onPress(): void;
+  onPress: () => void;
 };
 
-const styles = {
-  badge: {
-    marginRight: 20,
-    padding: 10,
-    borderRadius: 30,
-    width: 30,
-    height: 30,
-  },
-};
-
-const PandaItem = (props: PandaItemProps) => (
-  <ListGroupItem onClick={props.onPress}>
-    <Badge color="primary" style={styles.badge}>
-      {props.name.substring(0, 1)}
-    </Badge>
-    {props.name}
-  </ListGroupItem>
+const PandaItem = ({ name, onPress }: PandaItemProps) => (
+  <Box width="inherit" onClick={onPress} role="listitem">
+    <HStack spacing={10}>
+      <Avatar bg="blue.500" size="sm" name={name.substring(0, 1)} />
+      <Text>{name}</Text>
+    </HStack>
+  </Box>
 );
 
 export default PandaItem;
