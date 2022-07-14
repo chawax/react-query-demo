@@ -17,3 +17,5 @@ Then start the application :
 ```
 npm start
 ```
+
+It will start the application on `5173` port.
