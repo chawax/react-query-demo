@@ -1,4 +1,4 @@
-import { Button, Container, HStack, Spinner, VStack } from '@chakra-ui/react';
+import { Button, Container, Spinner, Stack, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -62,7 +62,10 @@ const PandaDetailsView = () => {
       {isSuccessOnLoadingPanda && pandaDetails && (
         <VStack spacing={10}>
           <PandaDetails panda={pandaDetails} />
-          <HStack spacing={10}>
+          <Stack
+            direction={{ base: 'column', md: 'row' }}
+            spacing={{ base: 5, md: 10 }}
+          >
             <Button colorScheme="blue" onClick={handleClose}>
               {t('common.close')}
             </Button>
@@ -72,7 +75,7 @@ const PandaDetailsView = () => {
             <Button colorScheme="blue" onClick={handleDelete}>
               {t('pandaDetails.deletePanda')}
             </Button>
-          </HStack>
+          </Stack>
         </VStack>
       )}
     </Container>
