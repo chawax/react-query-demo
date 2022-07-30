@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   render,
   screen,
@@ -7,7 +8,6 @@ import {
 } from '@testing-library/react';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
 
 import '../i18n';
