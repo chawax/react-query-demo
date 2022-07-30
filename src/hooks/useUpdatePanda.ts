@@ -1,5 +1,5 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-import { useMutation, useQueryClient } from 'react-query';
 
 import { Panda } from '../types/Panda';
 
@@ -12,7 +12,7 @@ const useUpdatePanda = () => {
         .then((response) => response.data),
     {
       onSuccess: () => {
-        queryCache.invalidateQueries('pandas');
+        queryCache.invalidateQueries(['pandas']);
       },
     },
   );

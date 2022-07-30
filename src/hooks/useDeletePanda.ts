@@ -1,5 +1,5 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-import { useMutation, useQueryClient } from 'react-query';
 
 const useDeletePanda = () => {
   const queryClient = useQueryClient();
@@ -10,7 +10,7 @@ const useDeletePanda = () => {
         .then((response) => response.data),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('pandas');
+        queryClient.invalidateQueries(['pandas']);
       },
     },
   );

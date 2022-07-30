@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query';
 import axios, { AxiosResponse } from 'axios';
-import { useQuery } from 'react-query';
 
 import { Panda } from '../types/Panda';
 
