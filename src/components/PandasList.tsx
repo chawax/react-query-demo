@@ -7,7 +7,7 @@ export type PandasListProps = {
   /**
    * List of pandas
    */
-  pandas: Panda[];
+  pandas: Array<Panda>;
 
   /**
    * A panda was pressed in the list

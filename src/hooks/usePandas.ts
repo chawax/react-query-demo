@@ -4,7 +4,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Panda } from '../types/Panda';
 
 const usePandas = () => {
-  return useQuery<Panda[], Error>(['pandas'], () =>
+  return useQuery<Array<Panda>, Error>(['pandas'], () =>
     axios
       .get('http://localhost:3004/pandas')
       .then((response: AxiosResponse) => response.data),
