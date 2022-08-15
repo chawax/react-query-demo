@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "private": false,
   "dependencies": {
-    "@chakra-ui/react": "2.2.6",
+    "@chakra-ui/react": "2.2.8",
     "@emotion/react": "11.10.0",
     "@emotion/styled": "11.10.0",
     "@tanstack/react-query": "4.1.3",
