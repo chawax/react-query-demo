@@ -13,7 +13,7 @@ const PandasListView = () => {
 
   // Hook to load pandas
 
-  const { isLoading, isSuccess, data, error, refetch } = usePandas();
+  const { isLoading, isSuccess, data, error } = usePandas();
 
   // Event handlers
 
@@ -28,7 +28,7 @@ const PandasListView = () => {
   return (
     <Flex width="full">
       {isLoading && <Spinner />}
-      {error && <ErrorAndRetry message={error.message} onRetry={refetch} />}
+      {error && <ErrorAndRetry message={error.message} />}
       {isSuccess && data && (
         <VStack width="100%">
           <PandasList pandas={data} onPress={handlePress} />

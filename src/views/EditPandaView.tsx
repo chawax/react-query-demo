@@ -24,14 +24,13 @@ const EditPandaView = () => {
     isError: isErrorOnLoadingPanda,
     data: pandaDetails,
     error: pandaLoadingError,
-    refetch,
   } = usePandaDetails(id!);
 
   // Hook to update panda
   const {
     isLoading: isUpdatingPanda,
     isError: isErrorOnUpdatePanda,
-    mutateAsync,
+    updatePanda,
   } = useUpdatePanda();
 
   // Event handlers
@@ -47,7 +46,7 @@ const EditPandaView = () => {
       interests: values.interests.split(','),
       image: values.image,
     };
-    await mutateAsync(panda);
+    await updatePanda(panda);
     navigate(`/pandas`, { replace: true });
   };
 
@@ -67,8 +66,8 @@ const EditPandaView = () => {
     <Container>
       <Heading as="h2">{t('editPanda.title', { id })}</Heading>
       {(isLoadingPandaDetails || isUpdatingPanda) && <Spinner />}
-      {isErrorOnLoadingPanda && (
-        <ErrorAndRetry message={pandaLoadingError.message} onRetry={refetch} />
+      {isErrorOnLoadingPanda && pandaLoadingError && (
+        <ErrorAndRetry message={pandaLoadingError.message} />
       )}
       {isErrorOnUpdatePanda && <Alert message={t('editPanda.errors.update')} />}
       {isSuccessOnLoadingPanda && pandaDetails && (

@@ -21,7 +21,6 @@ const PandaDetailsView = () => {
     isError: isErrorOnLoadingPanda,
     data: pandaDetails,
     error: loadingPandaError,
-    refetch: refetchPanda,
   } = usePandaDetails(id!);
 
   // Hook to delete panda
@@ -29,7 +28,7 @@ const PandaDetailsView = () => {
   const {
     isLoading: isDeletingPanda,
     isError: isErrorOnDeletingPanda,
-    mutateAsync: mutateDeletePanda,
+    deletePanda,
   } = useDeletePanda();
 
   // Event handlers
@@ -43,7 +42,7 @@ const PandaDetailsView = () => {
   };
 
   const handleDelete = async () => {
-    await mutateDeletePanda(id!);
+    await deletePanda(id!);
     navigate('/pandas');
   };
 
@@ -51,10 +50,7 @@ const PandaDetailsView = () => {
     <Container>
       {(isLoadingPanda || isDeletingPanda) && <Spinner />}
       {isErrorOnLoadingPanda && loadingPandaError && (
-        <ErrorAndRetry
-          message={loadingPandaError.message}
-          onRetry={refetchPanda}
-        />
+        <ErrorAndRetry message={loadingPandaError.message} />
       )}
       {isErrorOnDeletingPanda && (
         <Alert message={t('pandaDetails.error.delete')} />

@@ -1,6 +1,3 @@
-import type { ReactNode } from 'react';
-
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   render,
   screen,
@@ -14,34 +11,20 @@ import '../i18n';
 import pandas from '../mocks/pandas.json';
 import PandasListView from './PandasListView';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-    },
-  },
-});
-const ReactQueryWrapper = ({ children }: { children: ReactNode }) => (
-  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-);
-
 const axiosMock = new MockAdapter(axios);
 
 describe('PandasListView', () => {
   afterEach(() => {
     axiosMock.reset();
-    queryClient.getQueryCache().clear();
   });
 
   test('should render a list of pandas', async () => {
     axiosMock.onGet('http://localhost:3004/pandas').reply(200, pandas);
 
     render(
-      <ReactQueryWrapper>
-        <MemoryRouter>
-          <PandasListView />
-        </MemoryRouter>
-      </ReactQueryWrapper>,
+      <MemoryRouter>
+        <PandasListView />
+      </MemoryRouter>,
     );
 
     // Should display a loading indicator
@@ -67,11 +50,9 @@ describe('PandasListView', () => {
     axiosMock.onGet('http://localhost:3004/pandas').networkError();
 
     render(
-      <ReactQueryWrapper>
-        <MemoryRouter>
-          <PandasListView />
-        </MemoryRouter>
-      </ReactQueryWrapper>,
+      <MemoryRouter>
+        <PandasListView />
+      </MemoryRouter>,
     );
 
     // Should display a loading indicator

@@ -11,7 +11,7 @@ const CreatePandaView = () => {
 
   // Hook to create panda
 
-  const { isLoading, isError, mutateAsync } = useCreatePanda();
+  const { isLoading, isError, createPanda } = useCreatePanda();
 
   // Event handlers
 
@@ -21,7 +21,7 @@ const CreatePandaView = () => {
       interests: values.interests.split(','),
       image: values.image,
     };
-    await mutateAsync(panda);
+    await createPanda(panda);
     navigate('/pandas', { replace: true });
   };
 
