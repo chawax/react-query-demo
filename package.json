@@ -4,8 +4,8 @@
   "private": false,
   "dependencies": {
     "@chakra-ui/react": "2.2.8",
-    "@emotion/react": "11.10.0",
-    "@emotion/styled": "11.10.0",
+    "@emotion/react": "11.10.4",
+    "@emotion/styled": "11.10.4",
     "@tanstack/react-query": "4.3.3",
     "axios": "0.27.2",
     "framer-motion": "7.3.2",
