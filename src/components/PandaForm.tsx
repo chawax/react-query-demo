@@ -35,7 +35,7 @@ const PandaForm = ({ onCancel, onSubmit, initialValues }: PandaFormProps) => {
           render={({ field }) => (
             <TextInput
               label={t('pandaForm.name.label')}
-              placeholder={t('pandaForm.name.placeholder')}
+              placeholder={t('pandaForm.name.placeholder') ?? undefined}
               error={errors.name?.message}
               {...field}
             />
@@ -53,7 +53,7 @@ const PandaForm = ({ onCancel, onSubmit, initialValues }: PandaFormProps) => {
           render={({ field }) => (
             <TextInput
               label={t('pandaForm.interests.label')}
-              placeholder={t('pandaForm.interests.placeholder')}
+              placeholder={t('pandaForm.interests.placeholder') ?? undefined}
               error={errors.interests?.message}
               {...field}
             />
@@ -71,7 +71,7 @@ const PandaForm = ({ onCancel, onSubmit, initialValues }: PandaFormProps) => {
           render={({ field }) => (
             <TextInput
               label={t('pandaForm.image.label')}
-              placeholder={t('pandaForm.image.placeholder')}
+              placeholder={t('pandaForm.image.placeholder') ?? undefined}
               error={errors.image?.message}
               {...field}
             />
