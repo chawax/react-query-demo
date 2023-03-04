@@ -4,7 +4,8 @@ This project is a demo application for [React Query](https://react-query.tanstac
 
 In addition to React Query, this project uses mainly these tools and libraries :
 
-- [Vite.js](https://vitejs.dev/) as bundler
+- [Vite](https://vitejs.dev/) as bundler
+- [Vitest](https://vitest.dev/) as test runner
 - [Chakra UI](https://chakra-ui.com/) as components library
 - [React-i18Next](https://react.i18next.com/) for internationalization
 - [React Router](https://reactrouter.com/) as router
