@@ -8,7 +8,7 @@
     "@emotion/styled": "11.11.0",
     "@tanstack/react-query": "4.29.19",
     "axios": "1.4.0",
-    "framer-motion": "10.12.18",
+    "framer-motion": "10.12.21",
     "i18next": "23.2.11",
     "react": "18.2.0",
     "react-dom": "18.2.0",
