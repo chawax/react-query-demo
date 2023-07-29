@@ -29,7 +29,7 @@ const EditPandaView = () => {
 
   // Hook to update panda
   const {
-    isLoading: isUpdatingPanda,
+    isPending: isUpdatingPanda,
     isError: isErrorOnUpdatePanda,
     mutateAsync,
   } = useUpdatePanda();

@@ -3,17 +3,18 @@ import axios from 'axios';
 
 const useDeletePanda = () => {
   const queryClient = useQueryClient();
-  return useMutation(
-    (key: string) =>
+  return useMutation({
+    mutationFn: (key: string) =>
       axios
         .delete(`http://localhost:3004/pandas/${key}`)
         .then((response) => response.data),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['pandas']);
-      },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['pandas'],
+      });
     },
-  );
+  });
 };
 
 export default useDeletePanda;

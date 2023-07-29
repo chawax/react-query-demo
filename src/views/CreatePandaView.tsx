@@ -11,7 +11,7 @@ const CreatePandaView = () => {
 
   // Hook to create panda
 
-  const { isLoading, isError, mutateAsync } = useCreatePanda();
+  const { isPending, isError, mutateAsync } = useCreatePanda();
 
   // Event handlers
 
@@ -32,7 +32,7 @@ const CreatePandaView = () => {
   return (
     <Container>
       <Heading as="h2">{t('createPanda.title')}</Heading>
-      {isLoading && <Spinner />}
+      {isPending && <Spinner />}
       {isError && (
         <Box bg="tomato" color="white">
           {t('createPanda.error')}
