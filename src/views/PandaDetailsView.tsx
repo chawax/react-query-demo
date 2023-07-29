@@ -16,7 +16,7 @@ const PandaDetailsView = () => {
 
   const { id } = useParams<{ id: string }>();
   const {
-    isLoading: isLoadingPanda,
+    isPending: isLoadingPanda,
     isSuccess: isSuccessOnLoadingPanda,
     isError: isErrorOnLoadingPanda,
     data: pandaDetails,
@@ -27,7 +27,7 @@ const PandaDetailsView = () => {
   // Hook to delete panda
 
   const {
-    isLoading: isDeletingPanda,
+    isPending: isDeletingPanda,
     isError: isErrorOnDeletingPanda,
     mutateAsync: mutateDeletePanda,
   } = useDeletePanda();

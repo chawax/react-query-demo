@@ -27,7 +27,7 @@ const PandaForm = ({ onCancel, onSubmit, initialValues }: PandaFormProps) => {
     defaultValues: initialValues,
   });
   return (
-    <form noValidate onSubmit={handleSubmit(onSubmit)}>
+    (<form noValidate onSubmit={handleSubmit(onSubmit)}>
       <VStack spacing={5}>
         <Controller
           name="name"
@@ -101,7 +101,7 @@ const PandaForm = ({ onCancel, onSubmit, initialValues }: PandaFormProps) => {
           </Button>
         </HStack>
       </VStack>
-    </form>
+    </form>)
   );
 };
 

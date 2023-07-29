@@ -1,5 +1,4 @@
-import { Container, Flex, HStack, Spinner, VStack } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/react';
+import { Button, Flex, HStack, Spinner, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,7 +12,7 @@ const PandasListView = () => {
 
   // Hook to load pandas
 
-  const { isLoading, isSuccess, data, error, refetch } = usePandas();
+  const { isPending, isSuccess, data, error, refetch } = usePandas();
 
   // Event handlers
 
@@ -27,7 +26,7 @@ const PandasListView = () => {
 
   return (
     <Flex width="full">
-      {isLoading && <Spinner />}
+      {isPending && <Spinner />}
       {error && <ErrorAndRetry message={error.message} onRetry={refetch} />}
       {isSuccess && data && (
         <VStack width="100%">

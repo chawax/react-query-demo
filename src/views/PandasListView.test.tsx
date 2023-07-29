@@ -10,9 +10,9 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { MemoryRouter } from 'react-router-dom';
 
+import PandasListView from './PandasListView';
 import '../i18n';
 import pandas from '../mocks/pandas.json';
-import PandasListView from './PandasListView';
 
 const queryClient = new QueryClient({
   defaultOptions: {

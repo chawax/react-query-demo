@@ -4,11 +4,13 @@ import axios, { AxiosResponse } from 'axios';
 import { Panda } from '../types/Panda';
 
 const usePandas = () => {
-  return useQuery<Array<Panda>, Error>(['pandas'], () =>
-    axios
-      .get('http://localhost:3004/pandas')
-      .then((response: AxiosResponse) => response.data),
-  );
+  return useQuery<Array<Panda>, Error>({
+    queryKey: ['pandas'],
+    queryFn: () =>
+      axios
+        .get('http://localhost:3004/pandas')
+        .then((response: AxiosResponse) => response.data),
+  });
 };
 
 export default usePandas;

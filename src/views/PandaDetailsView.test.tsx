@@ -10,9 +10,9 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
+import PandaDetailsView from './PandaDetailsView';
 import '../i18n';
 import pandas from '../mocks/pandas.json';
-import PandaDetailsView from './PandaDetailsView';
 
 // Création d'un wrapper pour React Query
 // On désactive le mode retry

@@ -6,8 +6,8 @@ import { Panda } from '../types/Panda';
 const useCreatePanda = () => {
   const queryClient = useQueryClient();
 
-  return useMutation(
-    (panda: Panda) =>
+  return useMutation({
+    mutationFn: (panda: Panda) =>
       axios
         .post('http://localhost:3004/pandas', {
           name: panda.name,
@@ -15,12 +15,12 @@ const useCreatePanda = () => {
           image: panda.image,
         })
         .then((response) => response.data),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['pandas']);
-      },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['pandas'],
+      });
     },
-  );
+  });
 };
 
 export default useCreatePanda;
