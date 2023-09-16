@@ -1,5 +1,5 @@
 {
   "extends": ["config:base"],
   "timezone": "Europe/Paris",
-  "schedule": ["every weekend"]
+  "schedule": ["before 4am on the first day of the month"]
 }
