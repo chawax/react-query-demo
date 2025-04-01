@@ -17,7 +17,7 @@
     "react-router-dom": "6.16.0"
   },
   "devDependencies": {
-    "@swc/core": "1.11.7",
+    "@swc/core": "1.11.16",
     "@tanstack/react-query-devtools": "^5.0.0-beta.7",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.3.1",
