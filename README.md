@@ -23,7 +23,7 @@ It will start a small API server on `3004` port.
 To start the application in development mode :
 
 ```bash
-npm start
+npm run dev
 ```
 
 It will start the application in development mode on `5173` port. Any change to the source code will refresh the application.
@@ -31,10 +31,11 @@ It will start the application in development mode on `5173` port. Any change to 
 To start the application in production mode :
 
 ```bash
-npm run serve
+npm run build
+npm run preview
 ```
 
-It will start the application in production mode on `54173` port.
+It will start the application in production mode on `4173` port.
 
 To build the application :
 
