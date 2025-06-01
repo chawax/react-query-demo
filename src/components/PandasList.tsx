@@ -1,7 +1,7 @@
 import { Flex, Text, VStack } from '@chakra-ui/react';
 
-import { Panda } from '../types/Panda';
-import PandaItem from './PandaItem';
+import PandaItem from '@/components/PandaItem';
+import type { Panda } from '@/types/Panda';
 
 export type PandasListProps = {
   /**

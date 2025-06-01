@@ -2,7 +2,7 @@ import { Button, HStack, VStack } from '@chakra-ui/react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import TextInput from './TextInput';
+import TextInput from '@/components/TextInput';
 
 export type PandaFormValues = {
   name: string;
@@ -27,7 +27,7 @@ const PandaForm = ({ onCancel, onSubmit, initialValues }: PandaFormProps) => {
     defaultValues: initialValues,
   });
   return (
-    (<form noValidate onSubmit={handleSubmit(onSubmit)}>
+    <form noValidate onSubmit={handleSubmit(onSubmit)}>
       <VStack spacing={5}>
         <Controller
           name="name"
@@ -101,7 +101,7 @@ const PandaForm = ({ onCancel, onSubmit, initialValues }: PandaFormProps) => {
           </Button>
         </HStack>
       </VStack>
-    </form>)
+    </form>
   );
 };
 

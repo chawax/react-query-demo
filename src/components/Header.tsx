@@ -2,7 +2,7 @@ import { Flex, Heading, HStack, Spacer, Text, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import ChooseLanguage from './ChooseLanguage';
+import ChooseLanguage from '@/components/ChooseLanguage';
 
 const Header = () => {
   const { t } = useTranslation();

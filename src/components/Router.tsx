@@ -1,12 +1,12 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import CreatePandaView from '../views/CreatePandaView';
-import EditPandaView from '../views/EditPandaView';
-import NotFoundView from '../views/NotFoundView';
-import PandaDetailsView from '../views/PandaDetailsView';
-import PandasListView from '../views/PandasListView';
-import Header from './Header';
+import Header from '@/components/Header';
+import CreatePandaView from '@/views/CreatePandaView';
+import EditPandaView from '@/views/EditPandaView';
+import NotFoundView from '@/views/NotFoundView';
+import PandaDetailsView from '@/views/PandaDetailsView';
+import PandasListView from '@/views/PandasListView';
 
 const Router = () => {
   return (
