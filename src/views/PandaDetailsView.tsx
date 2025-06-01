@@ -49,7 +49,7 @@ const PandaDetailsView = () => {
 
   return (
     <Container>
-      {(isLoadingPanda || isDeletingPanda) && <Spinner />}
+      {(isLoadingPanda || isDeletingPanda) && <Spinner role="progressbar" />}
       {isErrorOnLoadingPanda && loadingPandaError && (
         <ErrorAndRetry
           message={loadingPandaError.message}
@@ -60,11 +60,11 @@ const PandaDetailsView = () => {
         <Alert message={t('pandaDetails.error.delete')} />
       )}
       {isSuccessOnLoadingPanda && pandaDetails && (
-        <VStack spacing={10}>
+        <VStack gap={10}>
           <PandaDetails panda={pandaDetails} />
           <Stack
             direction={{ base: 'column', md: 'row' }}
-            spacing={{ base: 5, md: 10 }}
+            gap={{ base: 5, md: 10 }}
           >
             <Button colorScheme="blue" onClick={handleClose}>
               {t('common.close')}
