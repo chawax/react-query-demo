@@ -1,9 +1,4 @@
-import {
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Input,
-} from '@chakra-ui/react';
+import { Field, Input } from '@chakra-ui/react';
 
 export type TextInputProps = {
   label: string;
@@ -25,11 +20,11 @@ const TextInput = ({
 }: TextInputProps) => {
   const isError = error !== undefined;
   return (
-    <FormControl isInvalid={isError}>
-      <FormLabel htmlFor={name}>
+    <Field.Root invalid={isError}>
+      <Field.Label htmlFor={name}>
         {label}
         {required && <sup> *</sup>}
-      </FormLabel>
+      </Field.Label>
       <Input
         id={name}
         name={name}
@@ -38,8 +33,8 @@ const TextInput = ({
         placeholder={placeholder}
         {...otherProps}
       />
-      <FormErrorMessage>{error}</FormErrorMessage>
-    </FormControl>
+      <Field.ErrorText>{error}</Field.ErrorText>
+    </Field.Root>
   );
 };
 

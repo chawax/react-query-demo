@@ -10,16 +10,16 @@ const PandaDetails = ({
   panda: { name, interests, image },
 }: PandaDetailsProps) => {
   return (
-    <VStack spacing={10}>
+    <VStack gap={10}>
       <Heading as="h1" colorScheme="blue">
         {name}
       </Heading>
       {interests && (
-        <HStack spacing={5}>
+        <HStack gap={5}>
           {interests.map((item) => (
-            <Tag key={item} colorScheme="blue">
-              {item}
-            </Tag>
+            <Tag.Root key={item} colorScheme="blue">
+              <Tag.Label>{item}</Tag.Label>
+            </Tag.Root>
           ))}
         </HStack>
       )}

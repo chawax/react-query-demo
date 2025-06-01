@@ -7,7 +7,7 @@ import ChooseLanguage from '@/components/ChooseLanguage';
 const Header = () => {
   const { t } = useTranslation();
   return (
-    <Flex width="inherit" padding={5} bgColor="blue.500">
+    <Flex width="inherit" padding={5} bgColor="gray.100">
       <Link to="/">
         <Heading as="h1">{t('app.title')}</Heading>
       </Link>

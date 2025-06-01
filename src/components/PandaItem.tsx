@@ -7,8 +7,10 @@ export type PandaItemProps = {
 
 const PandaItem = ({ name, onPress }: PandaItemProps) => (
   <Box width="inherit" onClick={onPress} role="listitem">
-    <HStack spacing={10}>
-      <Avatar bg="blue.500" size="sm" name={name.substring(0, 1)} />
+    <HStack gap={10}>
+      <Avatar.Root>
+        <Avatar.Fallback>{name.substring(0, 1)}</Avatar.Fallback>
+      </Avatar.Root>
       <Text>{name}</Text>
     </HStack>
   </Box>

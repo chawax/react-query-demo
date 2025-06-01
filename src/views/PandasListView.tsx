@@ -26,7 +26,7 @@ const PandasListView = () => {
 
   return (
     <Flex width="full">
-      {isPending && <Spinner />}
+      {isPending && <Spinner role="progressbar" />}
       {error && <ErrorAndRetry message={error.message} onRetry={refetch} />}
       {isSuccess && data && (
         <VStack width="100%">

@@ -28,7 +28,7 @@ const PandaForm = ({ onCancel, onSubmit, initialValues }: PandaFormProps) => {
   });
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)}>
-      <VStack spacing={5}>
+      <VStack gap={5}>
         <Controller
           name="name"
           control={control}
