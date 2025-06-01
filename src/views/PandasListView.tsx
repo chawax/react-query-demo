@@ -2,9 +2,9 @@ import { Button, Flex, HStack, Spinner, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import ErrorAndRetry from '../components/ErrorAndRetry';
-import PandasList from '../components/PandasList';
-import usePandas from '../hooks/usePandas';
+import ErrorAndRetry from '@/components/ErrorAndRetry';
+import PandasList from '@/components/PandasList';
+import usePandas from '@/hooks/usePandas';
 
 const PandasListView = () => {
   const navigate = useNavigate();

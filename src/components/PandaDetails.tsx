@@ -1,6 +1,6 @@
 import { Heading, HStack, Image, Tag, VStack } from '@chakra-ui/react';
 
-import { Panda } from '../types/Panda';
+import type { Panda } from '@/types/Panda';
 
 export type PandaDetailsProps = {
   panda: Panda;

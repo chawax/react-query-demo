@@ -1,7 +1,7 @@
 import { Button, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
-import Alert from './Alert';
+import Alert from '@/components/Alert';
 
 type ErrorAndRetryProps = {
   message: string;

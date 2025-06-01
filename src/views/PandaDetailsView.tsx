@@ -2,11 +2,11 @@ import { Button, Container, Spinner, Stack, VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import Alert from '../components/Alert';
-import ErrorAndRetry from '../components/ErrorAndRetry';
-import PandaDetails from '../components/PandaDetails';
-import useDeletePanda from '../hooks/useDeletePanda';
-import usePandaDetails from '../hooks/usePandaDetails';
+import Alert from '@/components/Alert';
+import ErrorAndRetry from '@/components/ErrorAndRetry';
+import PandaDetails from '@/components/PandaDetails';
+import useDeletePanda from '@/hooks/useDeletePanda';
+import usePandaDetails from '@/hooks/usePandaDetails';
 
 const PandaDetailsView = () => {
   const { t } = useTranslation();

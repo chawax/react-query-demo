@@ -2,8 +2,8 @@ import { Box, Container, Heading, Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import PandaForm, { PandaFormValues } from '../components/PandaForm';
-import useCreatePanda from '../hooks/useCreatePanda';
+import PandaForm, { type PandaFormValues } from '@/components/PandaForm';
+import useCreatePanda from '@/hooks/useCreatePanda';
 
 const CreatePandaView = () => {
   const { t } = useTranslation();

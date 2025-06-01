@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
-import { Panda } from '../types/Panda';
+import type { Panda } from '@/types/Panda';
 
 const useUpdatePanda = () => {
   const queryCache = useQueryClient();

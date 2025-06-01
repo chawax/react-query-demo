@@ -4,12 +4,12 @@ import { Container, Heading, Spinner } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import Alert from '../components/Alert';
-import ErrorAndRetry from '../components/ErrorAndRetry';
-import PandaForm, { PandaFormValues } from '../components/PandaForm';
-import usePandaDetails from '../hooks/usePandaDetails';
-import useUpdatePanda from '../hooks/useUpdatePanda';
-import { Panda } from '../types/Panda';
+import Alert from '@/components/Alert';
+import ErrorAndRetry from '@/components/ErrorAndRetry';
+import PandaForm, { type PandaFormValues } from '@/components/PandaForm';
+import usePandaDetails from '@/hooks/usePandaDetails';
+import useUpdatePanda from '@/hooks/useUpdatePanda';
+import type { Panda } from '@/types/Panda';
 
 const EditPandaView = () => {
   const { t } = useTranslation();
