@@ -34,7 +34,7 @@
     "husky": "8.0.3",
     "jsdom": "^22.0.0",
     "json-server": "0.17.4",
-    "lint-staged": "14.0.1",
+    "lint-staged": "16.1.0",
     "prettier": "3.5.3",
     "react-test-renderer": "18.2.0",
     "typescript": "5.8.3",
