@@ -11,15 +11,6 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-// This is to prevent Axios console.error traces from cluttering the test output
-const nativeConsoleError = global.console.error;
-global.console.error = (...args) => {
-  if (args.join('').includes('Error: Network Error')) {
-    return;
-  }
-  return nativeConsoleError(...args);
-};
-
 const { window } = new JSDOM();
 
 // window.matchMedia mock

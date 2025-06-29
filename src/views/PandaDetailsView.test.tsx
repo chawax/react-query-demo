@@ -38,17 +38,12 @@ const AllProviders = ({ children }: { children: React.ReactNode }) => (
   </ReactQueryWrapper>
 );
 
-// const axiosMock = new MockAdapter(axios);
-
 describe('PandaDetailsView', () => {
   afterEach(() => {
-    // axiosMock.reset();
     queryClient.getQueryCache().clear();
   });
 
   test('should render the details of the panda', async () => {
-    // axiosMock.onGet('http://localhost:3004/pandas/1').reply(200, pandas[0]);
-
     // To test this component we need to simulate the call of a route /pandas/1
 
     render(
@@ -87,8 +82,6 @@ describe('PandaDetailsView', () => {
   });
 
   test('should fail to load the details of the panda', async () => {
-    // axiosMock.onGet('http://localhost:3004/pandas/1').networkError();
-
     // Override the GET request handler to simulate a failure
     server.use(
       http.get(
