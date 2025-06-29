@@ -35,7 +35,7 @@
     "jsdom": "26.1.0",
     "json-server": "0.17.4",
     "lint-staged": "16.1.2",
-    "prettier": "3.5.3",
+    "prettier": "3.6.2",
     "react-test-renderer": "19.1.0",
     "typescript": "5.8.3",
     "vite": "6.3.5",
