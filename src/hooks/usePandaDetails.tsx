@@ -1,15 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import axios, { type AxiosResponse } from 'axios';
 
 import type { Panda } from '@/types/Panda';
 
 const usePandaDetails = (key: string) => {
   return useQuery<Panda, Error>({
     queryKey: ['pandas', key],
-    queryFn: () =>
-      axios
-        .get(`http://localhost:3004/pandas/${key}`)
-        .then((response: AxiosResponse) => response.data),
+    queryFn: async () => {
+      const response = await fetch(`http://localhost:3004/pandas/${key}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    },
   });
 };
 
