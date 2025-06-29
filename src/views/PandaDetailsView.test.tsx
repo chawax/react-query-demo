@@ -6,17 +6,18 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
+import { http } from 'msw';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 import ChakraProvider from '@/components/ChakraProvider';
 import '@/i18n';
+import { server } from '@/mocks/node';
 import pandas from '@/mocks/pandas.json';
 import PandaDetailsView from '@/views/PandaDetailsView';
 
-// Création d'un wrapper pour React Query
-// On désactive le mode retry
+// Create a wrapper for React Query with retry mode disabled
+// This is necessary to prevent the retry mechanism from interfering with tests
+// and to ensure that the tests can handle errors gracefully
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,16 +38,16 @@ const AllProviders = ({ children }: { children: React.ReactNode }) => (
   </ReactQueryWrapper>
 );
 
-const axiosMock = new MockAdapter(axios);
+// const axiosMock = new MockAdapter(axios);
 
 describe('PandaDetailsView', () => {
   afterEach(() => {
-    axiosMock.reset();
+    // axiosMock.reset();
     queryClient.getQueryCache().clear();
   });
 
   test('should render the details of the panda', async () => {
-    axiosMock.onGet('http://localhost:3004/pandas/1').reply(200, pandas[0]);
+    // axiosMock.onGet('http://localhost:3004/pandas/1').reply(200, pandas[0]);
 
     // To test this component we need to simulate the call of a route /pandas/1
 
@@ -86,7 +87,18 @@ describe('PandaDetailsView', () => {
   });
 
   test('should fail to load the details of the panda', async () => {
-    axiosMock.onGet('http://localhost:3004/pandas/1').networkError();
+    // axiosMock.onGet('http://localhost:3004/pandas/1').networkError();
+
+    // Override the GET request handler to simulate a failure
+    server.use(
+      http.get(
+        'http://localhost:3004/pandas/:id',
+        () => {
+          return new Response(null, { status: 500 });
+        },
+        { once: true },
+      ),
+    );
 
     // Pour tester ce composant on doit simuler l'appel d'une route /pandas/1
     // To test this component we need to simulate the call of a route /pandas/1
@@ -112,7 +124,9 @@ describe('PandaDetailsView', () => {
 
     // Should display an error message
 
-    const errorElement = screen.getByText(/Network Error/i);
+    const errorElement = screen.getByText(
+      /Request failed with status code 500/i,
+    );
     expect(errorElement).toBeInTheDocument();
   });
 });

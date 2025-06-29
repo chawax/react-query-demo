@@ -3,7 +3,15 @@ import '@testing-library/jest-dom/vitest';
 import { JSDOM } from 'jsdom';
 import { vi } from 'vitest';
 
-// Pour empêcher les traces de console.error de Axios pourrir la sortie des tests
+import { server } from './mocks/node';
+
+// Import the MSW server setup
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+// This is to prevent Axios console.error traces from cluttering the test output
 const nativeConsoleError = global.console.error;
 global.console.error = (...args) => {
   if (args.join('').includes('Error: Network Error')) {

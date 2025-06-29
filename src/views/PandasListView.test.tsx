@@ -6,16 +6,18 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
+import { http } from 'msw';
 import { MemoryRouter } from 'react-router-dom';
 
 import ChakraProvider from '@/components/ChakraProvider';
 import '@/i18n';
+import { server } from '@/mocks/node';
 import pandas from '@/mocks/pandas.json';
 import PandasListView from '@/views/PandasListView';
 
-const axiosMock = new MockAdapter(axios);
+// Create a wrapper for React Query with retry mode disabled
+// This is necessary to prevent the retry mechanism from interfering with tests
+// and to ensure that the tests can handle errors gracefully
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,13 +40,10 @@ const AllProviders = ({ children }: { children: React.ReactNode }) => (
 
 describe('PandasListView', () => {
   afterEach(() => {
-    axiosMock.reset();
     queryClient.getQueryCache().clear();
   });
 
   test('should render a list of pandas', async () => {
-    axiosMock.onGet('http://localhost:3004/pandas').reply(200, pandas);
-
     render(<PandasListView />, {
       wrapper: AllProviders,
     });
@@ -69,7 +68,16 @@ describe('PandasListView', () => {
   });
 
   test('should fail to load pandas', async () => {
-    axiosMock.onGet('http://localhost:3004/pandas').networkError();
+    // Override the GET request handler to simulate a failure
+    server.use(
+      http.get(
+        'http://localhost:3004/pandas',
+        () => {
+          return new Response(null, { status: 500 });
+        },
+        { once: true },
+      ),
+    );
 
     render(<PandasListView />, {
       wrapper: AllProviders,
@@ -87,7 +95,9 @@ describe('PandasListView', () => {
 
     // Should display an error message
 
-    const errorElement = screen.getByText(/Network Error/i);
+    const errorElement = screen.getByText(
+      /Request failed with status code 500/i,
+    );
     expect(errorElement).toBeInTheDocument();
   });
 });
