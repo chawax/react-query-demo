@@ -7,7 +7,7 @@
     "@chakra-ui/react": "3.19.1",
     "@emotion/react": "11.14.0",
     "@tanstack/react-query": "5.79.0",
-    "axios": "1.9.0",
+    "axios": "1.10.0",
     "i18next": "25.2.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
