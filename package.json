@@ -4,7 +4,7 @@
   "private": false,
   "type": "module",
   "dependencies": {
-    "@chakra-ui/react": "3.19.1",
+    "@chakra-ui/react": "3.21.1",
     "@emotion/react": "11.14.0",
     "@tanstack/react-query": "5.81.5",
     "axios": "1.10.0",
