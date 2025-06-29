@@ -1,5 +1,4 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
 
 import type { Panda } from '@/types/Panda';
 
@@ -7,14 +6,23 @@ const useCreatePanda = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (panda: Panda) =>
-      axios
-        .post('http://localhost:3004/pandas', {
+    mutationFn: async (panda: Panda) => {
+      const response = await fetch('http://localhost:3004/pandas', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           name: panda.name,
           interests: panda.interests,
           image: panda.image,
-        })
-        .then((response) => response.data),
+        }),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['pandas'],

@@ -95,9 +95,7 @@ describe('PandasListView', () => {
 
     // Should display an error message
 
-    const errorElement = screen.getByText(
-      /Request failed with status code 500/i,
-    );
+    const errorElement = screen.getByText(/HTTP error! status: 500/i);
     expect(errorElement).toBeInTheDocument();
   });
 });
