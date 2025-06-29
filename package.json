@@ -47,7 +47,6 @@
     "test:watch": "vitest",
     "serve": "npm run build && vite preview",
     "json-server": "./node_modules/.bin/json-server --watch ./json-server/db.json --port 3004 --id key",
-    "prepare": "husky install",
     "lint": "eslint",
     "lint:fix": "eslint",
     "prettify": "prettier --write .",
